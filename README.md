@@ -65,7 +65,7 @@ mongodb://user:password@localhost:27017/authdb
 
 前面在MongoDB启动时已经创建了一个数据库`authdb`，这个数据库用于存储认证信息。
 
-如果需要创建其他数据库，可以在MongoDB容器中执行以下命令：
+下面说明如何创建一个新的MongoDB database。
 
 先用root用户登录MongoDB：
 
@@ -96,3 +96,12 @@ mongosh -u user -p password --authenticationDatabase accountdb
 use accountdb
 show collections
 ```
+
+在VS Code的MongoDB插件中添加新数据库的连接：
+
+```bash
+mongodb://user:password@localhost:27017/accountdb
+```
+
+并将连接名为accountdb
+

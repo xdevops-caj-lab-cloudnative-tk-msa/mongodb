@@ -74,7 +74,9 @@ podman exec -it mymongodb /bin/bash
 mongosh -u root -p password123
 ```
 
-创建新的数据库，以accountdb为例：
+### 创建accountdb数据库
+
+创建新的数据库：
 ```bash
 # create a new database if not exisits
 use accountdb
@@ -105,3 +107,36 @@ mongodb://user:password@localhost:27017/accountdb
 
 并将连接名为accountdb
 
+
+### 创建statisticsdb数据库
+
+创建新的数据库：
+```bash
+# create a new database if not exisits
+use statisticsdb
+
+# create a user/password and grant roles to the user
+db.createUser({
+  user: "user",
+  pwd: "password",
+  roles: [ { role: "readWrite", db: "statisticsdb" } ]
+})
+
+# exit
+exit
+```
+
+验证用户可以访问新创建的数据库：
+```bash
+mongosh -u user -p password --authenticationDatabase statisticsdb
+use statisticsdb
+show collections
+```
+
+在VS Code的MongoDB插件中添加新数据库的连接：
+
+```bash
+mongodb://user:password@localhost:27017/statisticsdb
+```
+
+并将连接名为statisticsdb
